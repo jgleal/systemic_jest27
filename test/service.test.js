@@ -11,7 +11,7 @@ describe('Service Tests', () => {
 		request = supertest(app);
 	});
 
-	afterAll(() => sys.stop());
+	afterAll(async () => sys.stop());
 
 	it('returns manifest', () => request
 		.get('/__/manifest')
