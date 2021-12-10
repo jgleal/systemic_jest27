@@ -6,12 +6,12 @@ module.exports = ({ confabulous } = {}) => {
 	const { loaders } = Confabulous;
 
 	const start = (params, cb) => new Confabulous()
-		.add(() => loaders.require({ path: path.join(process.cwd(), 'config', 'default.js'), watch: true }))
+		.add(() => loaders.require({ path: path.join(process.cwd(), 'config', 'default.js'), watch: false }))
 		.add(() => loaders.require({
 			path: path.join(process.cwd(), 'config', `${process.env.SERVICE_ENV}.js`),
 			mandatory: false,
 		}))
-		.add(() => loaders.require({ path: path.join(process.cwd(), 'secrets', 'secrets.json'), watch: true, mandatory: false }))
+		.add(() => loaders.require({ path: path.join(process.cwd(), 'secrets', 'secrets.json'), watch: false, mandatory: false }))
 		.add(() => loaders.args())
 		.on('loaded', cb)
 		.on('error', cb)
